@@ -11,12 +11,15 @@ import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xyz.brandonfl.discordvirustotal.discordbot.event.MessageEvent;
+import xyz.brandonfl.discordvirustotal.service.VirusTotalScannerService;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DiscordBot {
   public final BotProperties botProperties;
+  private final VirusTotalScannerService virusTotalScannerService;
 
   public static final Activity DEFAULT_ACTIVITY = Activity.playing("scanner with VirusTotal");
 
@@ -25,7 +28,9 @@ public class DiscordBot {
 
     JDABuilder.createDefault(botProperties.getSetting().getToken())
         .setAutoReconnect(true)
-        .addEventListeners()
+        .addEventListeners(
+            new MessageEvent(virusTotalScannerService)
+        )
         .setActivity(DEFAULT_ACTIVITY)
         .build();
   }

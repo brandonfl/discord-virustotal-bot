@@ -9,6 +9,16 @@
       "name": "bot.setting.version",
       "type": "java.lang.String",
       "description": "Discord bot version"
+    },
+    {
+      "name": "bot.virus_total.token",
+      "type": "java.lang.String",
+      "description": "Virus total api token"
+    },
+    {
+      "name": "bot.virus_total.max_positive_score_for_blacklist",
+      "type": "java.lang.Integer",
+      "description": "Max number of positive score to backlist the url. More the positive score is high, more the url represents a risk."
     }
   ]
 }

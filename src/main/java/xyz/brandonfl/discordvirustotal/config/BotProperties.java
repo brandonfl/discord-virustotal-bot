@@ -16,10 +16,19 @@ public class BotProperties {
   @Getter
   private final Setting setting = new Setting();
 
+  @Getter
+  private final VirusTotal virusTotal = new VirusTotal();
+
   @Data
   public static class Setting {
     private String version;
     private String token;
+  }
+
+  @Data
+  public static class VirusTotal {
+    private String token;
+    private int maxPositiveScoreForBlacklist;
   }
 
 }
