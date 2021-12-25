@@ -43,12 +43,12 @@ public class VirusTotalScannerService {
     this.virusTotalRef = new VirustotalPublicV2Impl();
   }
 
-  public List<MaliciousUrl> isUrlsSafeFromReceivedMessage(String receivedMessage) {
-    return isUrlsSafe(getUrlsFromString(receivedMessage));
+  public List<MaliciousUrl> getMaliciousUrlsFromReceivedMessage(String receivedMessage) {
+    return getMaliciousUrls(getUrlsFromString(receivedMessage));
   }
 
   @SneakyThrows
-  public List<MaliciousUrl> isUrlsSafe(List<URL> urls) {
+  public List<MaliciousUrl> getMaliciousUrls(List<URL> urls) {
     List<MaliciousUrl> maliciousUrls = new ArrayList<>();
 
     try {
