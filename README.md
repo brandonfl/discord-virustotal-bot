@@ -1,17 +1,18 @@
-
 <h1 align="center">
+  <a href="https://github.com/brandonfl/discord-virustotal-bot"><img src="https://github.com/brandonfl/discord-virustotal-bot/blob/assets/virustotal.png?raw=true" width="100"/></a>
   <br>
-Discord Java Docker Bot
+  <a href="https://github.com/brandonfl/discord-virustotal-bot">Discord VirusTotal bot</a>
   <br>
 </h1>
-<h4 align="center"> Template project to create Discord bots with Docker and Java
+
+<h4 align="center"> Discord bot using VirusTotal API to check if the content of messages sent by discord users is safe
 
 <p align="center">
-  <a href="https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/releases"><img src="https://img.shields.io/github/v/release/FontanyLegall-Brandon/discord-java-docker-bot" alt="release"></a>
-  <a href="https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/actions?query=workflow%3Abuild-docker-and-publish"><img src="https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/workflows/build-docker-and-publish/badge.svg" alt="github-docker"></a>
-  <a href="https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/actions?query=workflow%3Asonar-gate"><img src="https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/workflows/sonar-gate/badge.svg" alt="github-sonar"></a>
-  <a href="https://sonarcloud.io/dashboard?id=FontanyLegall-Brandon_discord-java-docker-bot"><img src="https://sonarcloud.io/api/project_badges/measure?project=FontanyLegall-Brandon_discord-java-docker-bot&metric=alert_status" alt="sonar-gate"></a>
-  <a href="https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/FontanyLegall-Brandon/discord-java-docker-bot" alt="licence"></a>
+  <a href="https://github.com/brandonfl/discord-virustotal-bot/releases"><img src="https://img.shields.io/github/v/release/brandonfl/discord-virustotal-bot" alt="release"></a>
+  <a href="https://github.com/brandonfl/discord-virustotal-bot/actions?query=workflow%3Abuild-docker-and-publish"><img src="https://github.com/brandonfl/discord-virustotal-bot/workflows/build-docker-and-publish/badge.svg" alt="github-docker"></a>
+  <a href="https://github.com/brandonfl/discord-virustotal-bot/actions?query=workflow%3Asonar-gate"><img src="https://github.com/brandonfl/discord-virustotal-bot/workflows/sonar-gate/badge.svg" alt="github-sonar"></a>
+  <a href="https://sonarcloud.io/project/overview?id=brandonfl_discord-virustotal-bot"><img src="https://sonarcloud.io/api/project_badges/measure?project=brandonfl_discord-virustotal-bot&metric=alert_status" alt="sonar-gate"></a>
+  <a href="https://github.com/brandonfl/discord-virustotal-bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/brandonfl/discord-virustotal-bot" alt="licence"></a>
 </p>
 
 <p align="center">
@@ -21,10 +22,6 @@ Discord Java Docker Bot
 </p>
 
 ## How to use
-#### Use with docker-compose
-1. Change <a href="#variables">variables</a> in [application.properties](https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/blob/master/src/main/resources/application.properties) file
-
-2. Use command `docker-compose up`
 
 #### Use with docker run
 Command 
@@ -47,13 +44,13 @@ with `-e` the <a href="#variables">variables</a>
 |--|--|--|
 | LOG_FILE | Location of log file | ./log/bot.log |
 | BOT_TOKEN | Token of the Discord bot | None - **required** |
-| DB_USERNAME | The username used for your database | bot - **required** |
-| DB_PASSWORD | The password used for your database | bot - **required** |
-| DB_HOST | Where your database is hosted | bot-mysql - **required** |
-| DB_PORT | The port of your database | 3306 |
-| DB_NAME | The name of the table | bot - **required** |
-| DB_TIMEZONE | The timezone used | UTC |
+| VIRUS_TOTAL_TOKEN | Token of the VirusTotal API | None - **required** |
+| VIRUS_TOTAL_MAX_POSITIVE_SCORE_FOR_BLACKLIST | Max number of positive score to backlist the url. More the positive score is high, more the url represents a risk. | 3 |
+| DB_USERNAME | The username used for your database | bot |
+| DB_PASSWORD | The password used for your database | bot |
+| DB_FILE-PATH | Where your database files are stored | ./data/discordvirustotal |
+| DB_NAME | The name of the table | bot |
 
 ## Licence
 
-Project under [MIT](https://github.com/FontanyLegall-Brandon/discord-java-docker-bot/blob/master/LICENSE) licence
+Project under [MIT](https://github.com/brandonfl/discord-virustotal-bot/blob/master/LICENSE) licence
