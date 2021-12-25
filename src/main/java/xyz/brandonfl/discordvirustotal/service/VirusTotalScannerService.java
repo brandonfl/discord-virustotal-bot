@@ -119,7 +119,6 @@ public class VirusTotalScannerService {
   }
 
   @Async
-  @Transactional
   public void storeScannedResources(List<ScannedResource> resources) {
     if (resources != null && !resources.isEmpty()) {
       repositoryContainer.getScanRepository().saveAll(
