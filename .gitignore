@@ -265,7 +265,7 @@ crashlytics-build.properties
 fabric.properties
 
 # --------------------------
-# DOCKER
+# H2
 # --------------------------
 
-mysql-data/
+data/
