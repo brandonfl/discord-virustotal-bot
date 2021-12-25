@@ -79,37 +79,41 @@ public class VirusTotalScannerService {
 
     }
 
-    try {
-      List<ScannedResource> notAlreadyScannedResources = new ArrayList<>();
+    if (!urlsToScan.isEmpty()) {
+      try {
+        List<ScannedResource> notAlreadyScannedResources = new ArrayList<>();
 
-      FileScanReport[] reports = virusTotalRef.getUrlScanReport(urlsToScan.toArray(String[]::new), false);
+        FileScanReport[] reports = virusTotalRef.getUrlScanReport(urlsToScan.toArray(String[]::new), false);
 
-      for (FileScanReport report : reports) {
-        if (report.getResponseCode() == 1) {
-          ScannedResource scannedResource = ScannedResource.builder()
-              .resource(report.getResource())
-              .virusTotalPermaLink(report.getPermalink())
-              .positiveScore(report.getPositives())
-              .isMalicious(report.getPositives() >= botProperties.getVirusTotal().getMaxPositiveScoreForBlacklist())
-              .build();
+        for (FileScanReport report : reports) {
+          if (report.getResponseCode() == 1) {
+            ScannedResource scannedResource = ScannedResource.builder()
+                .resource(report.getResource())
+                .virusTotalPermaLink(report.getPermalink())
+                .positiveScore(report.getPositives())
+                .isMalicious(report.getPositives() >= botProperties.getVirusTotal().getMaxPositiveScoreForBlacklist())
+                .build();
 
-          notAlreadyScannedResources.add(scannedResource);
+            notAlreadyScannedResources.add(scannedResource);
 
-          if (scannedResource.isMalicious()) {
-            log.warn("Malicious url detected: {}", scannedResource);
+            if (scannedResource.isMalicious()) {
+              log.warn("Malicious url detected: {}", scannedResource);
+            } else {
+              log.info("Scanned resource {}: {}", scannedResource.getResource(), scannedResource);
+            }
           }
         }
+
+        storeScannedResources(notAlreadyScannedResources);
+        scannedResources.addAll(notAlreadyScannedResources);
+
+      } catch (UnauthorizedAccessException e) {
+        log.error("Unauthorized access to API, please verify your token", e);
+      } catch (QuotaExceededException e) {
+        log.warn("Quota exceeded");
+      } catch (Exception e) {
+        log.error("Error during scan", e);
       }
-
-      storeScannedResources(notAlreadyScannedResources);
-      scannedResources.addAll(notAlreadyScannedResources);
-
-    } catch (UnauthorizedAccessException e) {
-      log.error("Unauthorized access to API, please verify your token", e);
-    } catch (QuotaExceededException e) {
-      log.warn("Quota exceeded");
-    } catch (Exception e) {
-      log.error("Error during scan", e);
     }
 
     return scannedResources;
