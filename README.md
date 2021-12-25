@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center"> Discord bot using VirusTotal API to check if the content of messages sent by discord users is safe
+<h4 align="center"> Discord bot using VirusTotal API to check if the content of messages sent by discord users is safe </h4>
 
 <p align="center">
   <a href="https://github.com/brandonfl/discord-virustotal-bot/releases"><img src="https://img.shields.io/github/v/release/brandonfl/discord-virustotal-bot" alt="release"></a>
