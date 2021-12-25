@@ -45,7 +45,6 @@ public class VirusTotalScannerService {
     return scanUrls(getUrlsFromString(receivedMessage));
   }
 
-  @SneakyThrows
   public List<ScannedResource> scanUrls(List<URL> urls) {
     List<ScannedResource> scannedResources = new ArrayList<>();
     if (urls == null || urls.isEmpty()) {
