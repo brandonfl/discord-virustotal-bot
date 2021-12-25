@@ -1,4 +1,4 @@
-package com.brandonfl.demobot.config;
+package xyz.brandonfl.discordvirustotal.config;
 
 import lombok.Data;
 import lombok.Getter;

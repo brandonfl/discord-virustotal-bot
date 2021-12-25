@@ -1,4 +1,4 @@
-package com.brandonfl.demobot;
+package xyz.brandonfl.discordvirustotal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
