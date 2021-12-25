@@ -1,22 +1,17 @@
 package xyz.brandonfl.discordvirustotal.discordbot.event;
 
-import static xyz.brandonfl.discordvirustotal.utils.UrlDetectorUtil.getUrlsFromString;
-
 import java.awt.Color;
 import java.text.MessageFormat;
 import java.util.List;
-import javax.annotation.Nonnull;
 import lombok.AllArgsConstructor;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
-import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.events.message.guild.GenericGuildMessageEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageUpdateEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
-import xyz.brandonfl.discordvirustotal.DTO.MaliciousUrl;
+import xyz.brandonfl.discordvirustotal.DTO.ScannedResource;
 import xyz.brandonfl.discordvirustotal.service.VirusTotalScannerService;
 import xyz.brandonfl.discordvirustotal.utils.DiscordBotUtil;
 
@@ -36,8 +31,8 @@ public class MessageEvent extends ListenerAdapter {
 
   private void onMessage(GenericGuildMessageEvent genericEvent, Message message) {
     if (!genericEvent.getJDA().getSelfUser().getId().equals(message.getAuthor().getId()) ) {
-      List<MaliciousUrl> maliciousUrlList = virusTotalScannerService.getMaliciousUrlsFromReceivedMessage(message.getContentStripped());
-      if (!maliciousUrlList.isEmpty()){
+      List<ScannedResource> scannedResourceList = virusTotalScannerService.scanUrlsFromReceivedMessage(message.getContentStripped());
+      if (ScannedResource.asMaliciousResource(scannedResourceList)){
         message.delete().queue();
 
         MessageEmbed userMaliciousWarning = DiscordBotUtil.getGenericEmbed(genericEvent.getJDA())
