@@ -9,8 +9,8 @@
 
 <p align="center">
   <a href="https://github.com/brandonfl/discord-virustotal-bot/releases"><img src="https://img.shields.io/github/v/release/brandonfl/discord-virustotal-bot" alt="release"></a>
-  <a href="https://github.com/brandonfl/discord-virustotal-bot/actions?query=workflow%3Abuild-docker-and-publish"><img src="https://github.com/brandonfl/discord-virustotal-bot/workflows/build-docker-and-publish/badge.svg" alt="github-docker"></a>
-  <a href="https://github.com/brandonfl/discord-virustotal-bot/actions?query=workflow%3Asonar-gate"><img src="https://github.com/brandonfl/discord-virustotal-bot/workflows/sonar-gate/badge.svg" alt="github-sonar"></a>
+  <a href="https://hub.docker.com/r/brandonfl/discord-virustotal-bot"><img src="https://img.shields.io/docker/v/brandonfl/discord-virustotal-bot?label=Docker%20Hub" alt="docker-hub"></a>
+  <a href="https://github.com/brandonfl/discord-virustotal-bot/actions/workflows/codeql-analysis.yml"><img src="https://github.com/brandonfl/discord-virustotal-bot/actions/workflows/codeql-analysis.yml/badge.svg?branch=master" alt="CodeQL"></a>
   <a href="https://sonarcloud.io/project/overview?id=brandonfl_discord-virustotal-bot"><img src="https://sonarcloud.io/api/project_badges/measure?project=brandonfl_discord-virustotal-bot&metric=alert_status" alt="sonar-gate"></a>
   <a href="https://github.com/brandonfl/discord-virustotal-bot/blob/master/LICENSE"><img src="https://img.shields.io/github/license/brandonfl/discord-virustotal-bot" alt="licence"></a>
 </p>
